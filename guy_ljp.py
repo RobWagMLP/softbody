@@ -44,11 +44,11 @@ def mainLoop():
 def main():
     global rad, line_a_diag, line_b_diag, line_a_hor, line_b_hor, cloud
 
-    cloud = LJP(2, 4, 4., 5. + rad, rad, 8, 4, [[line_a_diag, line_b_diag]])
+    cloud = LJP(2, 5, 4., 5. + rad, rad, 8, 4, [[line_a_diag, line_b_diag]])
 
     draw_grid(cloud.particles)
     
-    root.after(500, mainLoop )
+    root.after(5000, mainLoop )
     root.mainloop()
 
 main()

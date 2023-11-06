@@ -5,23 +5,26 @@ from masspoint import MassPoint
 
 class SoftObject:  
 
-    def __init__(self, grid, iD = 10, is0=100, iRadMass = 30, iMass = 5, lines=[]):
-        self.D   = iD
-        self.s0  = is0
-        self.s0D = math.sqrt(2*(is0*is0))
-        self.radMass = iRadMass
-        self.mass = iMass
-        self.masspoints = []
-        self.collisionDamp = .85
-        self.dt = 1/100.
-        self.damping = .995
-        self.init_mp(grid)
-        self.g = vector.obj(x = 0., y = 1100)
+    def __init__(self, grid, iD = 10, is0 = 100, iRadMass = 30, iMass = 5, lines=[]):
+        self.D              = iD
+        self.s0             = is0
+        self.s0D            = math.sqrt(2*(is0*is0))
+        self.radMass        = iRadMass
+        self.mass           = iMass
+        self.masspoints     = []
+        self.collisionDamp  = .85
+        self.dt             = 1/100.
+        self.damping        = .995
+        self.g              = vector.obj(x = 0., y = 1100)
         self.deltaThreshold = 0.001
-        self.lines = lines
+        self.lines          = lines
+        self.init_mp(grid)
 
     def length(self, vec: vector.VectorObject2D):
         return math.sqrt(vec.x*vec.x + vec.y*vec.y)
+    
+    def sqrt_length(self, vec: vector.VectorObject2D):
+        return (vec.x*vec.x + vec.y*vec.y)
     
     def init_mp(self, grid):
         for i in range(0, len(grid)):
@@ -86,7 +89,7 @@ class SoftObject:
         for i in range(0, len(self.masspoints)):
             for j in range(0, len(self.masspoints[i])):
                 val = self.masspoints[i][j]
-                if val["collision"]["dist"] < rads:
+                if val["collision"]["dist"] < rads*rads:
                      
                     k = val["collision"]["i"]
                     l = val["collision"]["j"]
@@ -94,13 +97,13 @@ class SoftObject:
                     if k < i or (k == i and l < j):
                         continue         
 
-                    self.reflect(val["mp"], self.masspoints[k][l]["mp"], val["collision"]["dist"] - rads)
-                    self.masspoints[k][l]["mp"].vel *= self.collisionDamp
-                    val["collision"]["dist"]      = 999999
+                    self.reflect(val["mp"], self.masspoints[k][l]["mp"], math.sqrt(val["collision"]["dist"]) - rads)
+                    self.masspoints[k][l]["mp"].vel           *= self.collisionDamp
+                    val["collision"]["dist"]                   = 999999
                     self.masspoints[k][l]["collision"]["dist"] = 999999
 
                 ddt = self.dt*0.5
-                for u in range (0, 2):
+                for _ in range (0, 2):
                     val["mp"].vel += ddt * self.g
                     val["mp"].pos += ddt * val["mp"].vel
                     for line in self.lines:
@@ -112,8 +115,8 @@ class SoftObject:
             if k == i:
                 a = j +1
             for l in range(a, len(self.masspoints[k])):
-                val = self.masspoints[k][l]
-                dist = self.length(A["mp"].pos - val["mp"].pos)
+                val  = self.masspoints[k][l]
+                dist = self.sqrt_length(A["mp"].pos - val["mp"].pos)
                 if dist < A["collision"]["dist"]:
                     A["collision"]["dist"] = dist
                     A["collision"]["i"]    = k
@@ -138,24 +141,17 @@ class SoftObject:
         vel_new_a = vel_a + (math.fabs( 2*((-vel_a).dot(normAB))) * normAB )
         vel_new_b = vel_b + (math.fabs( 2*((-vel_b).dot(normBA))) * normBA )
 
-        hp = 2*((A.mass * v_abs_a + B.mass * v_abs_b)/(A.mass + B.mass))
-        
-        #A.vel = 10.36*vel_new_a.unit()
-        #B.vel = 197.84*vel_new_b.unit()
+        hp = 2*((A.mass * v_abs_a + B.mass * v_abs_b)/(A.mass + B.mass))      
 
         gA = (hp - v_abs_a)
         gB = (hp - v_abs_b)
         A.vel = gA * ( vel_new_a.unit() )
         B.vel = gB * ( vel_new_b.unit() )
-
-        print(2*((-vel_a).dot(normAB)),  2*((-vel_b).dot(normBA)))
-
-        print("\n")
-        
-        Acorr = dist.unit() * (.51*diff)       
+       
+        Acorr = normBA * (.51*diff)       
         A.pos += Acorr
 
-        Bcorr = (-dist).unit() * (.51*diff)       
+        Bcorr = normAB * (.51*diff)       
         B.pos += Bcorr
              
     def collide_all_with_line(self, aL: vector.VectorObject2D, bL: vector.VectorObject2D):
@@ -168,9 +164,9 @@ class SoftObject:
         normLine = vector.obj(x = -dirLine.y, y = dirLine.x).unit()
 
         t = ( P.pos.y*dirLine.x - aL.y*dirLine.x - P.pos.x*dirLine.y + aL.x*dirLine.y ) / ( normLine.x*dirLine.y - normLine.y*dirLine.x )
-        dist = self.length(t*normLine)
+        dist = self.sqrt_length(t*normLine)
 
-        if dist <= P.rad:
+        if dist <= P.rad*P.rad:
             k = -1
             if dirLine.y == 0:
                 k = (P.pos.x + t*normLine.x - aL.x)/dirLine.x
@@ -183,7 +179,7 @@ class SoftObject:
 
                 new_v = P.vel +( 2*((-P.vel).dot(normLine)) * normLine )
 
-                diffDist = dist - 2*P.rad
+                diffDist = math.sqrt(dist) - 2*P.rad
                 PCorr = distVec.unit() * diffDist 
 
                 P.pos += PCorr

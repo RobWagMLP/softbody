@@ -59,7 +59,7 @@ def draw_grid():
             row[j] = point
         point_grid[i] = row
 
-        canvas.create_line(line_a_diag.x, line_a_diag.y, line_b_diag.x, line_b_diag.y, width='3', tags=("lines",), fill="white")
+        canvas.create_line(line_a_diag.x, line_a_diag.y    , line_b_diag.x, line_b_diag.y   , width='3', tags=("lines",), fill="white")
         canvas.create_line(line_a_hor.x , line_a_hor.y + 3 , line_b_hor.x , line_b_hor.y + 3, width='3', tags=("lines",), fill="white")
         canvas.pack
         canvas.tag_lower("lines")
