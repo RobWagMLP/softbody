@@ -9,19 +9,25 @@ root = tk.Tk()
 canvas = tk.Canvas(root, width='800', height='800', bg='black')
 
 line = 0
-rad =10
+rad =5
 
 #point_grid = [
 #    [{"point": vector.obj(x=100, y = 100), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, 
-#     {"point": vector.obj(x=350, y = 100), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}]
+#     {"point": vector.obj(x=150, y = 100), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}]
 #    ]
 
 point_grid = [
-    [{"point": vector.obj(x=100, y = 100), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=150, y = 100), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=200, y = 100), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=250, y = 100), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=300, y = 100), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=350, y = 100), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=400, y = 100), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}],
-    [{"point": vector.obj(x=100, y = 150), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=150, y = 150), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=200, y = 150), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=250, y = 150), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=300, y = 150), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=350, y = 150), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=400, y = 150), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}],
-    [{"point": vector.obj(x=100, y = 200), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=150, y = 200), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=200, y = 200), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=250, y = 200), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=300, y = 200), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=350, y = 200), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=400, y = 200), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}],
-    [{"point": vector.obj(x=100, y = 250), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=150, y = 250), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=200, y = 250), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=250, y = 250), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=300, y = 250), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=350, y = 250), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=400, y = 250), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}]
+    [{"point": vector.obj(x=100, y = 100), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=130, y = 100), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=160, y = 100), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=190, y = 100), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=220, y = 100), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=250, y = 100), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=280, y = 100), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}],
+    [{"point": vector.obj(x=100, y = 130), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=130, y = 130), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=160, y = 130), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=190, y = 130), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=220, y = 130), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=250, y = 130), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=280, y = 130), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}],
+    [{"point": vector.obj(x=100, y = 160), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=130, y = 160), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=160, y = 160), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=190, y = 160), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=220, y = 160), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=250, y = 160), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=280, y = 160), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}],
+    [{"point": vector.obj(x=100, y = 190), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=130, y = 190), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=160, y = 190), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=190, y = 190), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=220, y = 190), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=250, y = 190), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}, {"point": vector.obj(x=280, y = 190), "pId": 0, "lIds": {"rO": 0, "rd": 0, "rr": 0, "rU": 0}}]
 ]
+
+line_a_diag = vector.obj(x=0 ,  y=400)
+line_b_diag = vector.obj(x=200, y=600)
+
+line_a_hor = vector.obj(x=0   , y=800)
+line_b_hor = vector.obj(x=2000, y=800)
 
 soft_object = None
 
@@ -32,34 +38,40 @@ def draw_grid():
         row = point_grid[i]
         for j in range (0, len(row) ):
             point = row[j]
-            point["pId"] = canvas.create_oval(point["point"].x, point["point"].y, point["point"].x + rad*2,  point["point"].y + rad*2, fill='green', tags=("dots",))
+            point["pId"] = canvas.create_oval(point["point"].x -rad , point["point"].y - rad, point["point"].x + rad,  point["point"].y + rad, fill='green', tags=("dots",))
             canvas.pack()
             if i > 0:
                 ref_point = point_grid[i - 1][j]
-                point["lIds"]["rO"] = canvas.create_line(point["point"].x + rad, point["point"].y + rad, ref_point["point"].x + rad,ref_point["point"].y + rad, fill='white', width='2', tags=("lines",))
+                point["lIds"]["rO"] = canvas.create_line(point["point"].x , point["point"].y, ref_point["point"].x,ref_point["point"].y, fill='white', width='2', tags=("lines",))
                 canvas.pack()
             if i > 0 and j < len(row) -1:
                 ref_point = point_grid[i - 1][j + 1]
-                point["lIds"]["rd"] = canvas.create_line(point["point"].x + rad, point["point"].y + rad, ref_point["point"].x + rad,ref_point["point"].y + rad, fill='white', width='2', tags=("lines",))
+                point["lIds"]["rd"] = canvas.create_line(point["point"].x , point["point"].y, ref_point["point"].x,ref_point["point"].y, fill='white', width='2', tags=("lines",))
                 canvas.pack()
             if j < len(row) -1:
                 ref_point = point_grid[i][j + 1]
-                point["lIds"]["rr"] = canvas.create_line(point["point"].x + rad, point["point"].y + rad, ref_point["point"].x + rad,ref_point["point"].y + rad, fill='white', width='2', tags=("lines",))
+                point["lIds"]["rr"] = canvas.create_line(point["point"].x , point["point"].y, ref_point["point"].x,ref_point["point"].y, fill='white', width='2', tags=("lines",))
                 canvas.pack()
             if j < len(row) -1 and i < len(point_grid) - 1:
                 ref_point = point_grid[i + 1][j + 1]
-                point["lIds"]["rU"] = canvas.create_line(point["point"].x + rad, point["point"].y + rad, ref_point["point"].x + rad,ref_point["point"].y + rad, fill='white', width='2', tags=("lines",))
+                point["lIds"]["rU"] = canvas.create_line(point["point"].x, point["point"].y, ref_point["point"].x,ref_point["point"].y, fill='white', width='2', tags=("lines",))
                 canvas.pack()
             row[j] = point
         point_grid[i] = row
+
+        canvas.create_line(line_a_diag.x, line_a_diag.y, line_b_diag.x, line_b_diag.y, width='3', tags=("lines",), fill="white")
+        canvas.create_line(line_a_hor.x , line_a_hor.y + 3 , line_b_hor.x , line_b_hor.y + 3, width='3', tags=("lines",), fill="white")
+        canvas.pack
         canvas.tag_lower("lines")
 
 def length(vec: vector.VectorObject2D):
     return math.sqrt(vec.x*vec.x + vec.y*vec.y)
 
 def mainLoop():
-    object = soft_object.update_stats()
+    global line_a_diag, line_b_diag, line_a_hor, line_b_hor
 
+    object = soft_object.update_stats()
+ 
     for i in range(0, len(object) ):
         row = object[i]
         for j in range(0, len(row) ):
@@ -77,14 +89,14 @@ def mainLoop():
             if j < len(row) -1 and i < len(point_grid) - 1:
                 ref_point = object[i + 1][j + 1]["mp"].pos
                 canvas.coords(point_grid[i][j]["lIds"]["rU"], mp.x + rad, mp.y + rad, ref_point.x + rad, ref_point.y + rad)
-    root.after(int(1000/60), mainLoop )
+    root.after(1, mainLoop )
 
 def main():
-    global point_grid, soft_object, rad
+    global point_grid, soft_object, rad, line_a_diag, line_b_diag, line_a_hor, line_b_hor
 
     draw_grid()
-    soft_object = SoftObject(point_grid, 20, 50, rad, 5)
-    root.after(100, mainLoop )
+    soft_object = SoftObject(point_grid, 15000, 30, rad, 2, [[line_a_diag, line_b_diag], [line_a_hor, line_b_hor]])
+    root.after(500, mainLoop )
     root.mainloop()
 
 main()
